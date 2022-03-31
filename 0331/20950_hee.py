@@ -10,19 +10,15 @@ def Munduri(idx, K, R, G, B):
         return
     # 최대 7개의 색만을 혼합할 수 있다
 
-    for i in range(idx, N):
-        if not V[i]:
-            V[i] = True
-            r, g, b = arr[i]
-            Munduri(i, K+1, R + r, G + g, B + b)
-            V[i] = False
+    for i in range(idx, N):   
+        r, g, b = arr[i]
+        Munduri(i+1, K+1, R + r, G + g, B + b)
 
 N = int(input())
 arr = []
 for _ in range(N):
     arr.append(list(map(int, input().split())))
 gomduri = list(map(int, input().split()))
-V = [False] * N
 ans = 255 + 255 + 255
 
 Munduri(0, 0, 0, 0, 0)
